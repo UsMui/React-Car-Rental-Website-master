@@ -12,6 +12,7 @@ import Contact from "../pages/Contact";
 import { UserProvider } from "../store/context";
 import reducer from "../store/reducer";
 import INIT_STATE from "../store/initState";
+import Login from "../pages/Login";
 
 const Routers = () => {
   const localState = localStorage.getItem("state")?JSON.parse(localStorage.getItem("state")):INIT_STATE;
@@ -28,6 +29,7 @@ const Routers = () => {
       <Route path="/blogs/:slug" element={<BlogDetails />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="/login" element={<Login/>} />
     </Routes>
 
     </UserProvider>
