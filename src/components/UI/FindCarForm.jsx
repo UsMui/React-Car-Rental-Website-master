@@ -10,7 +10,6 @@ const FindCarForm = () => {
         <FormGroup className="form__group">
           <input type="text" placeholder="Brand" required />
         </FormGroup>
-
         <FormGroup className="form__group">
           <input type="text" placeholder="Type" required />
         </FormGroup>
@@ -18,20 +17,8 @@ const FindCarForm = () => {
           <input type="text" placeholder="Qty Seat" required />
         </FormGroup>
         <FormGroup className="form__group">
-          <label>Model</label>
           <input type="text" placeholder="Model" required />
         </FormGroup>
-
-        <FormGroup className="form__group">
-          <label>Rent Date</label>
-          <input type="date" placeholder="Rent Date" required />
-        </FormGroup>
-         <FormGroup className="form__group">
-         <label>Return Date</label>
-          <input type="date" placeholder="Return date" required />
-        </FormGroup>
-        
-
         <FormGroup className="form__group">
           <p></p>
           <button className="btn find__car-btn">Find Car</button>
@@ -40,5 +27,4 @@ const FindCarForm = () => {
     </Form>
   );
 };
-
 export default FindCarForm;

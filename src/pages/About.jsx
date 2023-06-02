@@ -15,7 +15,6 @@ const About = () => {
     <Helmet title="About">
       <CommonSection title="About Us" />
       <AboutSection aboutClass="aboutPage" />
-
       <section className="about__page-section">
         <Container>
           <Row>
