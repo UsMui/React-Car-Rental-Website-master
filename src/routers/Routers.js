@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import AdminDashboard from "../admins/AdminDashboard";
+
 import Home from "../pages/Home";
 import About from "../pages/About";
 import CarListing from "../pages/CarListing";
@@ -20,7 +20,6 @@ const Routers = () => {
     <UserProvider value ={{state,dispatch}}>
     <Routes>
       <Route path="/" element={<Navigate to="/home" />} />
-      <Route path="/admins" element={<AdminDashboard/>}/>
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/cars" element={<CarListing />} />
@@ -30,6 +29,7 @@ const Routers = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
+
     </UserProvider>
   );
 };
