@@ -17,7 +17,6 @@ const FindCarForm = () => {
           <input type="text" placeholder="Qty Seat" required />
         </FormGroup>
         <FormGroup className="form__group">
-          <label>Model</label>
           <input type="text" placeholder="Model" required />
         </FormGroup>
         <FormGroup className="form__group">
