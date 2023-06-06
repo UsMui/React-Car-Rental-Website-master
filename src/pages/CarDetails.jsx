@@ -75,12 +75,12 @@ return (
                       className="ri-settings-2-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
-                    {brand.name}
+                    {/* {brand.name} */}
                   </span>
 
                   <span className=" d-flex align-items-center gap-1 section__description">
                     <i
-                      class="ri-timer-flash-line"
+                      className="ri-timer-flash-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
                     {"singleCarItem.speed"}
@@ -109,7 +109,7 @@ return (
                       className="ri-building-2-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
-                    {type.name}
+                    {/* {type.name} */}
                   </span>
                 </div>
               </div>

@@ -20,14 +20,13 @@ const CarListing = (props) => {
   return (
     <Helmet title="Cars">
       <CommonSection title="Car Listing" />
-
       <section>
         <Container>
           <Row>
             <Col lg="12">
               <div className=" d-flex align-items-center gap-3 mb-5">
                 <span className=" d-flex align-items-center gap-2">
-                  <i class="ri-sort-asc"></i> Sort By
+                  <i className="ri-sort-asc"></i> Sort By
                 </span>
 
                 <select>
@@ -37,9 +36,8 @@ const CarListing = (props) => {
                 </select>
               </div>
             </Col>
-
-            {cars.map((item) => (
-              <CarItem item={item} key={item.id} />
+            { cars.map((item)=>(
+              <CarItem item = {item} key={item.id}/>
             ))}
           </Row>
         </Container>
