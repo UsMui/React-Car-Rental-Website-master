@@ -12,14 +12,14 @@ import { find } from "../sevices/car.service";
 const CarDetails = (props) => {
   const [car,setCar] = useState({});
   const [brand,setBrand] = useState({});
-  const[type,setType]= useState({});
+  const[typeCar,setTypeCar]= useState({});
   const {id} = useParams();
   const {state,dispatch} = useContext(UserContext);
   const findCar = async ()=>{
     const c = await find(id);
     setCar(c);
     setBrand(c.brand);
-    setType(c.type);
+    setTypeCar(c.typeCar);
   }
   useEffect(()=>{
     findCar();
@@ -109,7 +109,7 @@ return (
                       className="ri-building-2-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
-                    {type.name}
+                    {typeCar.name}
                   </span>
                 </div>
               </div>
