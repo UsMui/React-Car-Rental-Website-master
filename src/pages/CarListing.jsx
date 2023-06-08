@@ -38,6 +38,7 @@ const CarListing = (props) => {
             </Col>
             { cars.map((item)=>(
               <CarItem item = {item} key={item.id}/>
+              
             ))}
           </Row>
         </Container>

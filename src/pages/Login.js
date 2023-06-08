@@ -19,9 +19,6 @@ const Login = (props)=>{
         setTimeout(()=>{dispatch({type:"HIDE_LOADING"})},1000);
         localStorage.setItem("state",JSON.stringify(state));
         api.defaults.headers.common["Authorization"] = `Bearer ${u.token}`;
-       
-
-    
     }
 
 
@@ -48,8 +45,8 @@ const Login = (props)=>{
             </div>
             <div className="col-md-4"></div>
             </div>
-          </div>
+          </div> 
         </section>
-    )
+    ) 
 }
 export default Login;
