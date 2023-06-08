@@ -1,7 +1,7 @@
 import api from "./api";
 export const get = async ()=>{
     try {
-        const url = "otos";
+        const url = "cars";
         const rs = await api.get(url);
         return rs.data;
     } catch (error) {
@@ -10,7 +10,7 @@ export const get = async ()=>{
 }
 export const find = async (id) =>{
     try{
-        const url ="otos/get-by-id?id="+id;
+        const url ="cars/get-by-id?id="+id;
         const rs = await api.get(url);
         return rs.data;
     }catch(error){
