@@ -8,16 +8,27 @@ export const get = async ()=>{
        return [];
    }
 }
+
 export const find = async (id) =>{
     try{
         const url ="cars/get-by-id?id="+id;
         const rs = await api.get(url);
         return rs.data;
-    
     }catch(error){
         return {};
     }
 }
 export const post = async()=>{
-
+ 
+}
+export const search = async(car)=>{
+    const url="cars/search?type="+car.type+"&brand="+car.brand+"&name="+car.name;
+    try{
+        const rs = await api.get(url);
+        return rs.data;     
+    }catch(error){
+        alert("Khong tim thay ket qua nao vui long tim kiem lai");
+        return [];
+    }
+    
 }
