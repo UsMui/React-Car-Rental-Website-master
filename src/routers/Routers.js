@@ -13,6 +13,7 @@ import { UserProvider } from "../store/context";
 import reducer from "../store/reducer";
 import INIT_STATE from "../store/initState";
 import Login from "../pages/Login";
+import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 
 const Routers = () => {
@@ -31,6 +32,7 @@ const Routers = () => {
       <Route path="/contact" element={<Contact />} />
       <Route path="*" element={<NotFound />} />
       <Route path="/login" element={<Login/>} />
+      <Route path="/register" element={<Register/>} />
       <Route path='/profile' element={<Profile/>}/>
     </Routes>
 

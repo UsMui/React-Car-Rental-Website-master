@@ -25,3 +25,15 @@ export const auth_profile = async ()=>{
         return {};
     }
 }
+export const register_member = async(user)=>{
+    const url = "auth/register";
+    try{
+        const rs = await api.post(url,{name:user.name,email:user.email,password:user.password});
+        alert("Tạo tài khoản thành công");
+        return rs.data;
+
+    }catch(error){
+        alert("Tài khoản hoặc mật khẩu không đúng");
+        return {};
+    }
+}
