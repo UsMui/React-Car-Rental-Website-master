@@ -1,4 +1,5 @@
-import React, { useContext, useState } from "react";import { register_member } from "../sevices/auth.service";
+import React, { useContext, useState } from "react";
+import { register_member } from "../sevices/auth.service";
 import UserContext from "../store/context";
 import api from "../sevices/api";
 
