@@ -1,14 +1,10 @@
 import React from "react";
 import "../../styles/booking-form.css";
-import { post_contract } from "../../sevices/contract.service";
 import { Form, FormGroup } from "reactstrap";
 
-const BookingForm = async() => {
-  const submitHandler = (event) => {
-    event.preventDefault();
-  };
+const BookingForm = () => {
   return (
-    <Form onSubmit={submitHandler}>
+    <Form >
       <FormGroup className="booking__form d-inline-block me-4 mb-4">
         <input type="text" name = "numberContract" placeholder="Number Contract" />
       </FormGroup>
@@ -96,5 +92,5 @@ const BookingForm = async() => {
     </Form>
   );
 };
-
+ 
 export default BookingForm;

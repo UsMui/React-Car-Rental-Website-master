@@ -32,16 +32,13 @@ return (
             <Col lg="6">
               <img src={car.thumbnail} alt="" className="w-100" />
             </Col>
-
             <Col lg="6">
               <div className="car__info">
                 <h2 className="section__title">{car.name}</h2>
-
                 <div className=" d-flex align-items-center gap-5 mb-4 mt-3">
                   <h6 className="rent__price fw-bold fs-4">
                     ${car.giathue1ngay}.00 / Day
                   </h6>
-
                   <span className=" d-flex align-items-center gap-2">
                     <span style={{ color: "#f9a826" }}>
                       <i className="ri-star-s-fill"></i>
@@ -53,11 +50,9 @@ return (
                     ({"singleCarItem.rating"} ratings)
                   </span>
                 </div>
-
                 <p className="section__description">
                   {car.description}
                 </p>
-
                 <div
                   className=" d-flex align-items-center mt-3"
                   style={{ columnGap: "4rem" }}
@@ -69,7 +64,6 @@ return (
                     ></i>{" "}
                     {car.name}
                   </span>
-
                   <span className=" d-flex align-items-center gap-1 section__description">
                     <i
                       className="ri-settings-2-line"
@@ -86,7 +80,6 @@ return (
                      {car.bienso}
                   </span>
                 </div>
-
                 <div
                   className=" d-flex align-items-center mt-3"
                   style={{ columnGap: "2.8rem" }}
@@ -97,8 +90,7 @@ return (
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
                     {car.sochongoi}
-                  </span>
-
+                  </span> 
                   <span className=" d-flex align-items-center gap-1 section__description">
                     <i
                       className="ri-building-2-line"
