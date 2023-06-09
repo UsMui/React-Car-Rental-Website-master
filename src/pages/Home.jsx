@@ -107,7 +107,7 @@ const Home = (props) => {
                    
          
                    <button className=" w-50 car__item-btn car__btn-details">
-                     <Link to={"/otos/"+item.id}>Details</Link>
+                     <Link to={"/cars/"+item.id}>Details</Link>
                    </button> 
                  </div>
                </div>
