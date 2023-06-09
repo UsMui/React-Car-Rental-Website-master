@@ -83,7 +83,7 @@ return (
                       class="ri-timer-flash-line"
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
-                    {"singleCarItem.speed"}
+                     {car.bienso}
                   </span>
                 </div>
 
@@ -91,11 +91,6 @@ return (
                   className=" d-flex align-items-center mt-3"
                   style={{ columnGap: "2.8rem" }}
                 >
-                  <span className=" d-flex align-items-center gap-1 section__description">
-                    <i className="ri-map-pin-line" style={{ color: "#f9a826" }}></i>{" "}
-                    {"singleCarItem.gps"}
-                  </span>
-
                   <span className=" d-flex align-items-center gap-1 section__description">
                     <i
                       className="ri-wheelchair-line"
@@ -110,6 +105,13 @@ return (
                       style={{ color: "#f9a826" }}
                     ></i>{" "}
                     {typeCar.name}
+                  </span>
+                  <span className=" d-flex align-items-center gap-1 section__description">
+                    <i
+                      className="ri-map-pin-line"
+                      style={{ color: "#f9a826" }}
+                    ></i>{" "}
+                    {car.namsanxuat}
                   </span>
                 </div>
               </div>
