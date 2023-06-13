@@ -12,7 +12,7 @@ const Register = (props)=>{
         setUser(user);
     }
     const register = async (e)=>{
-        e.preventDefault();
+        e.preventDefault(); 
         const u = await register_member(user);
         dispatch({type:"AUTH_LOGIN",payload:u.token});
         state.token = u.token;

@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from "react";
 import { Form, FormGroup } from "reactstrap";
 import carData from "../assets/data/carData";
@@ -9,17 +10,19 @@ import UserContext from "../store/context";
 import { find } from "../sevices/car.service";
 import "../styles/booking-form.css";
 import { auth_profile } from "../sevices/auth.service";
+import { postContract } from "../sevices/contract.service";
 
 const CarDetails = (props) => {
   const [car,setCar] = useState({});
   const [brand,setBrand] = useState({});
   const[typeCar,setTypeCar]= useState({});
   const[user,setUser] = useState({});
+  const [contract,setContract] = useState({numberContract:"",name:"",address:"",email:"",tel:"",thumbnail:"",CCCD:"",contents:"",ngaykihopdong:"",ngaythue:"",ngaytra:"",giatrihopdong:"",giatridatcoc:"",cars_id:"",users_id:""});
   const {id} = useParams();
   const {state,dispatch} = useContext(UserContext);
     const getProfile = async ()=>{
-        const user = await auth_profile();
-        setUser(user);
+        const u = await auth_profile();
+        setUser(u);
     }
   const findCar = async ()=>{
     const c = await find(id);
@@ -27,31 +30,31 @@ const CarDetails = (props) => {
     setBrand(c.brand);
     setTypeCar(c.typeCar);
   }
+    const handleInput = (event)=>{
+        contract[event.target.numberContract] = event.target.value;
+        contract[event.target.name] = event.target.value;
+        contract[event.target.address] = event.target.value;
+        contract[event.target.email] = event.target.value;
+        contract[event.target.tel] = event.target.value;
+        contract[event.target.thumbnail] = event.target.value;
+        contract[event.target.CCCD] = event.target.value;
+        contract[event.target.contents] = event.target.value;
+        contract[event.target.ngaykihopdong] = event.target.value;
+        contract[event.target.ngaythue] = event.target.value;
+        contract[event.target.ngaytra] = event.target.value;
+        contract[event.target.giatrihopdong] = event.target.value;
+        contract[event.target.giatridatcoc] = event.target.value;
+        contract[event.target.cars_id] = event.target.value;
+        contract[event.target.users_id] = event.target.value;
+        setContract(contract); 
+       
+    }
+    const postContract = async (e)=>{
+      e.preventDefault();
+    }
   useEffect(()=>{
     findCar() ; getProfile();
   },[]);
-    // const postContract  = (e)=>{
-    //   e.preventDefault();
-    // const handleInput = (event)=>{
-    //     contract[event.target.numberContract] = event.target.value;
-    //     contract[event.target.name] = event.target.value;
-    //     contract[event.target.address] = event.target.value;
-    //     contract[event.target.email] = event.target.value;
-    //     contract[event.target.tel] = event.target.value;
-    //     contract[event.target.thumbnail] = event.target.value;
-    //     contract[event.target.CCCD] = event.target.value;
-    //     contract[event.target.contents] = event.target.value;
-    //     contract[event.target.ngaykihopdong] = event.target.value;
-    //     contract[event.target.ngaythue] = event.target.value;
-    //     contract[event.target.ngaytra] = event.target.value;
-    //     contract[event.target.giatrihopdong] = event.target.value;
-    //     contract[event.target.giatridatcoc] = event.target.value;
-    //     contract[event.target.cars_id] = event.target.value;
-    //     contract[event.target.users_id] = event.target.value;
-    //     setContract(contract); 
-    // }
-    // }
-  
   
 return (
     <Helmet title={car.name}>
@@ -140,60 +143,57 @@ return (
 
             <Col lg="7" className="mt-5">
               <div className="booking-info mt-5">
-              <h5 className="mb-4 fw-bold ">Booking Information</h5>
-    <Form >
-            <FormGroup  className="booking__form d-inline-block me-4 mb-4">
-              <input type="text"   name = "numberContract" placeholder="Number Contract" />
+<h5 className="mb-4 fw-bold ">Booking Information</h5>
+    <Form onSubmit={postContract} method="post" >
+            <FormGroup className="booking__form d-inline-block me-4 mb-4">
+              <input type="text" onChange={handleInput}  name = "numberContract"  placeholder="Number Contract" />
             </FormGroup>
             <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-              <input type="text"   name = "name" placeholder="Name Rental" />
+              <input type="text" onChange={handleInput}  name = "name"  placeholder="Name Rental" />
             </FormGroup>
 
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
-              <input type="text"   name = "address"placeholder="Address" />
+              <input type="text" onChange={handleInput}  name = "address"placeholder="Address" />
             </FormGroup>
             <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-              <input type="email"   name ="email"placeholder="Email" />
+              <input type="email" onChange={handleInput}  name ="email"placeholder="Email" />
             </FormGroup>
 
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
-              <input type="text"  name="tel" placeholder="Phone Number" />
+              <input type="text" onChange={handleInput} name="tel" placeholder="Phone Number" />
             </FormGroup>
             <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-              <input type="text" name="thumbnail" placeholder="avatar" />
+              <input type="text"onChange={handleInput}  name="thumbnail" placeholder="avatar" />
             </FormGroup>
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
-              <input type="text"  name="CCCD" placeholder="CCCD" />
+              <input type="text" onChange={handleInput} name="CCCD" placeholder="CCCD" />
             </FormGroup>
             <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-              <input type="email"  name="contents" placeholder="Content" />
+              <input type="text" onChange={handleInput} name="contents" placeholder="Content" />
             </FormGroup>
 
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
-              <input type="date"  name="ngaykihopdong" placeholder="Contract signing date" />
+              <input type="date" onChange={handleInput} name="ngaykihopdong" placeholder="Contract signing date" />
             </FormGroup>
             <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-              <input type="date"  name="ngaythue" placeholder="Date of hire" />
+              <input type="date" onChange={handleInput} name="ngaythue" placeholder="Date of hire" />
             </FormGroup>
 
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
-              <input type="date" name="ngaytra"placeholder="Return date" />
+              <input type="date"  onChange={handleInput} name="ngaytra"placeholder="Return date" />
             </FormGroup>
             <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-              <input type="int"  name="giatrihopdong" placeholder="Contract value" />
+              <input type="int" onChange={handleInput} name="giatrihopdong" placeholder="Contract value" />
             </FormGroup>
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
-              <input type="int" name="giatridatcoc"placeholder="Contract deposits" />
+              <input type="int" onChange={handleInput}  name="giatridatcoc"placeholder="Contract deposits" />
             </FormGroup>
             <FormGroup className="booking__form d-inline-block ms-1 mb-4">
-              <input type="int" name="cars_id"placeholder="carsId" value= {car.id} />
+              <input type="int"onChange={handleInput}  name="cars_id"placeholder="carsId" value= {car.id} />
             
             </FormGroup>
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
-            <input type="int" name="users_id" placeholder="usersId" value={user.id}/>
-            </FormGroup>
-            <FormGroup>
-              <textarea rows={5} type="textarea" className="textarea" placeholder="Node"></textarea>
+<input type="int" onChange={handleInput}  name="users_id" placeholder="usersId" value={user.id}/>
             </FormGroup>
             <button type="submit" className="btn btn-primary">Submit</button>
     </Form>
