@@ -10,6 +10,8 @@ import UserContext from "../store/context";
 import { find } from "../sevices/car.service";
 import "../styles/booking-form.css";
 import { auth_profile } from "../sevices/auth.service";
+import { async } from "q";
+import { postContract } from "../sevices/contract.service";
 
 const CarDetails = (props) => {
   // const [car,setCar] = useState({});
@@ -17,7 +19,7 @@ const CarDetails = (props) => {
   const [brand,setBrand] = useState({});
   const[typeCar,setTypeCar]= useState({});
   const[user,setUser] = useState({});
-  const [contract,setContract] = useState({numberContract:"",name:"",address:"",email:"",tel:"",thumbnail:"",CCCD:"",contents:"",ngaykihopdong:"",ngaythue:"",ngaytra:"",giatrihopdong:"",giatridatcoc:"",cars_id:"",users_id:""});
+  const [contract,setContract] = useState({numberContract:"",name:"",address:"",email:"",tel:"",thumbnail:"",cccd:"",contents:"",ngaykihopdong:"",ngaythue:"",ngaytra:"",giatrihopdong:0,giatridatcoc:0,carsId:0,usersId:0});
   const {id} = useParams();
   const {state,dispatch} = useContext(UserContext);
     const getProfile = ()=>{
@@ -31,22 +33,14 @@ const CarDetails = (props) => {
     setTypeCar(c.typeCar);
   } 
     const handleInput = (event)=>{
-        contract[event.target.numberContract] = event.target.value;
         contract[event.target.name] = event.target.value;
-        contract[event.target.address] = event.target.value;
-        contract[event.target.email] = event.target.value;
-        contract[event.target.tel] = event.target.value;
-        contract[event.target.thumbnail] = event.target.value;
-        contract[event.target.CCCD] = event.target.value;
-        contract[event.target.contents] = event.target.value;
-        contract[event.target.ngaykihopdong] = event.target.value;
-        contract[event.target.ngaythue] = event.target.value;
-        contract[event.target.ngaytra] = event.target.value;
-        contract[event.target.giatrihopdong] = event.target.value;
-        contract[event.target.giatridatcoc] = event.target.value;
-        contract[event.target.cars_id] = event.target.value;
-        contract[event.target.users_id] = event.target.value;
         setContract(contract); 
+    }
+    const post = async (e)=>{
+
+      e.preventDefault();
+      const c = await postContract(contract);
+      
     }
   useEffect(()=>{
     findCar() ; getProfile();
@@ -140,7 +134,7 @@ return (
             <Col lg="7" className="mt-5">
               <div className="booking-info mt-5">
 <h5 className="mb-4 fw-bold ">Booking Information</h5>
-    <Form >
+    <Form onSubmit={post} method="post">
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
               <input type="text" onChange={handleInput}  name = "numberContract"  placeholder="Number Contract" />
             </FormGroup>
