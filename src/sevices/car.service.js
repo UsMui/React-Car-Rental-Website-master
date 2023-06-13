@@ -22,7 +22,7 @@ export const post = async()=>{
  
 }
 export const search = async(car)=>{
-    const url="cars/search?type="+car.type+"&brand="+car.brand+"&name="+car.name;
+    const url="cars/search?t="+car.type+"||b="+car.brand+"||q="+car.name;
     try{
         const rs = await api.get(url);
         return rs.data;     

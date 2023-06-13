@@ -51,18 +51,17 @@ const Home = (props) => {
                   <h2>Find your best car here</h2>
                 </div>
               </Col>
-
               <Col lg="8" md="8" sm="12">
                 <Form onSubmit={findCar} method="post" className="form">
                 <div className=" d-flex align-items-center justify-content-between flex-wrap">
                   <FormGroup className="form__group">
-                    <input onChange={handleInput} name="brand"  type="text" placeholder="Brand" required />
+                    <input onChange={handleInput} name="brand"  type="text" placeholder="Brand" />
                   </FormGroup>
                   <FormGroup className="form__group">
-                    <input onChange={handleInput} name="type" type="text" placeholder="Type" required  />
+                    <input onChange={handleInput} name="type" type="text" placeholder="Type"  />
                   </FormGroup>
                   <FormGroup className="form__group">
-                    <input onChange={handleInput} name="name" type="text" placeholder="Model" required  />
+                    <input onChange={handleInput} name="name" type="text" placeholder="Model"  />
                   </FormGroup>
                   <FormGroup className="form__group">
                     <p></p>
