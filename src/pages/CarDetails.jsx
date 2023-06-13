@@ -10,9 +10,9 @@ import UserContext from "../store/context";
 import { find } from "../sevices/car.service";
 import "../styles/booking-form.css";
 import { auth_profile } from "../sevices/auth.service";
-import { postContract } from "../sevices/contract.service";
 
 const CarDetails = (props) => {
+  // const [car,setCar] = useState({});
   const [car,setCar] = useState({});
   const [brand,setBrand] = useState({});
   const[typeCar,setTypeCar]= useState({});
@@ -20,16 +20,16 @@ const CarDetails = (props) => {
   const [contract,setContract] = useState({numberContract:"",name:"",address:"",email:"",tel:"",thumbnail:"",CCCD:"",contents:"",ngaykihopdong:"",ngaythue:"",ngaytra:"",giatrihopdong:"",giatridatcoc:"",cars_id:"",users_id:""});
   const {id} = useParams();
   const {state,dispatch} = useContext(UserContext);
-    const getProfile = async ()=>{
-        const u = await auth_profile();
-        setUser(u);
+    const getProfile = ()=>{
+        
+        setUser(state.userlogin);
     }
   const findCar = async ()=>{
     const c = await find(id);
     setCar(c);
     setBrand(c.brand);
     setTypeCar(c.typeCar);
-  }
+  } 
     const handleInput = (event)=>{
         contract[event.target.numberContract] = event.target.value;
         contract[event.target.name] = event.target.value;
@@ -47,10 +47,6 @@ const CarDetails = (props) => {
         contract[event.target.cars_id] = event.target.value;
         contract[event.target.users_id] = event.target.value;
         setContract(contract); 
-       
-    }
-    const postContract = async (e)=>{
-      e.preventDefault();
     }
   useEffect(()=>{
     findCar() ; getProfile();
@@ -144,7 +140,7 @@ return (
             <Col lg="7" className="mt-5">
               <div className="booking-info mt-5">
 <h5 className="mb-4 fw-bold ">Booking Information</h5>
-    <Form onSubmit={postContract} method="post" >
+    <Form >
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
               <input type="text" onChange={handleInput}  name = "numberContract"  placeholder="Number Contract" />
             </FormGroup>
@@ -194,6 +190,9 @@ return (
             </FormGroup>
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
 <input type="int" onChange={handleInput}  name="users_id" placeholder="usersId" value={user.id}/>
+            </FormGroup>
+            <FormGroup>
+              <textarea rows={5} type="textarea" className="textarea" placeholder="Node"></textarea>
             </FormGroup>
             <button type="submit" className="btn btn-primary">Submit</button>
     </Form>

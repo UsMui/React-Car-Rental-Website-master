@@ -17,10 +17,10 @@ import Register from "../pages/Register";
 import Profile from "../pages/Profile";
 
 const Routers = () => {
-  const localState = localStorage.getItem("state")?JSON.parse(localStorage.getItem("state")):INIT_STATE;
-  const[state,dispatch] = useReducer(reducer,localState);
+  // const localState = localStorage.getItem("state")?JSON.parse(localStorage.getItem("state")):INIT_STATE;
+  // const[state,dispatch] = useReducer(reducer,localState);
   return (
-    <UserProvider value ={{state,dispatch}}>
+   
     <Routes>
       <Route path="/" element={<Navigate to="/home" />} />
       <Route path="/home" element={<Home />} />
@@ -36,7 +36,7 @@ const Routers = () => {
       <Route path='/profile' element={<Profile/>}/>
     </Routes>
 
-    </UserProvider>
+  
   );
 };
 

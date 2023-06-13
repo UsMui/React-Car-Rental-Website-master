@@ -2,11 +2,15 @@ import React, { useContext, useState } from "react";
 import { auth_login } from "../sevices/auth.service";
 import UserContext from "../store/context";
 import api from "../sevices/api";
+import { useResolvedPath } from "react-router-dom";
+import { auth_profile } from "../sevices/auth.service";
 
 
 const Login = (props)=>{
     const {state,dispatch} = useContext(UserContext);
     const [user,setUser] = useState({email:"",password:""});
+
+    
     const handleInput = (event)=>{
         user[event.target.name] = event.target.value;
         setUser(user);
@@ -16,11 +20,15 @@ const Login = (props)=>{
         const u = await auth_login(user);
         dispatch({type:"AUTH_LOGIN",payload:u.token});
         state.token = u.token;
+        dispatch({type:"UPDATE_USER",payload:u});
+        state.userlogin = u;
         setTimeout(()=>{dispatch({type:"HIDE_LOADING"})},1000);
         localStorage.setItem("state",JSON.stringify(state));
         api.defaults.headers.common["Authorization"] = `Bearer ${u.token}`;
+        
     }
-
+    
+    
 
     return(
         <section>

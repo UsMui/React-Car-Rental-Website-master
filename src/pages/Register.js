@@ -12,15 +12,18 @@ const Register = (props)=>{
         setUser(user);
     }
     const register = async (e)=>{
-        e.preventDefault(); 
+        e.preventDefault();
         const u = await register_member(user);
         dispatch({type:"AUTH_LOGIN",payload:u.token});
         state.token = u.token;
+        dispatch({type:"UPDATE_USER",payload:u});
+        state.userlogin = u;
         setTimeout(()=>{dispatch({type:"HIDE_LOADING"})},1000);
         localStorage.setItem("state",JSON.stringify(state));
         api.defaults.headers.common["Authorization"] = `Bearer ${u.token}`;
     
     }
+   
 
 
     return(

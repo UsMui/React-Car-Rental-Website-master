@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
+import UserContext from "../store/context";
 import {
     MDBCol,
     MDBContainer,
@@ -20,10 +21,12 @@ import { MDBTable, MDBTableHead, MDBTableBody } from 'mdb-react-ui-kit';
 import { auth_profile } from "../sevices/auth.service";
 
 const Profile = (props)=>{
+    const{state, dispatch} = useContext(UserContext);
+   
     const [user,setUser] = useState({});
-    const getProfile = async ()=>{
-        const u = await auth_profile();
-        setUser(u);
+    const getProfile = ()=>{
+        
+        setUser(state.userlogin);
     }
     useEffect(()=>{
         getProfile();
