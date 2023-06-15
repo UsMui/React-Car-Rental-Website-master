@@ -1,17 +1,17 @@
 
 import React, { useContext, useEffect, useState } from "react";
-import { Form, FormGroup } from "reactstrap";
+
 import carData from "../assets/data/carData";
 import { Container, Row, Col, NavbarBrand } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import { useParams } from "react-router-dom";
+import BookingForm from "../components/UI/BookingForm";
 import PaymentMethod from "../components/UI/PaymentMethod";
 import UserContext from "../store/context";
 import { find } from "../sevices/car.service";
-import "../styles/booking-form.css";
+import { Form, FormGroup } from "reactstrap";
 import { auth_profile } from "../sevices/auth.service";
-import { async } from "q";
-import { postContract } from "../sevices/contract.service";
+import { create } from "../sevices/contract.service";
 
 const CarDetails = (props) => {
   // const [car,setCar] = useState({});
@@ -19,11 +19,12 @@ const CarDetails = (props) => {
   const [brand,setBrand] = useState({});
   const[typeCar,setTypeCar]= useState({});
   const[user,setUser] = useState({});
-  const [contract,setContract] = useState({numberContract:"",name:"",address:"",email:"",tel:"",thumbnail:"",cccd:"",contents:"",ngaykihopdong:"",ngaythue:"",ngaytra:"",giatrihopdong:0,giatridatcoc:0,carsId:0,usersId:0});
+  const [contract,setContract] = useState({numberContract:"",name:"",address:"",email:"",
+  tel:"",thumbnail:"",cccd:"",status:0, contents:"",ngaykyhopdong:"",ngaythue:"",
+  ngaytra:"",giatrihopdong:0,giatridatcoc:0,carsId:id,usersId:userlogin.id});
   const {id} = useParams();
   const {state,dispatch} = useContext(UserContext);
     const getProfile = ()=>{
-        
         setUser(state.userlogin);
     }
   const findCar = async ()=>{
@@ -33,14 +34,11 @@ const CarDetails = (props) => {
     setTypeCar(c.typeCar);
   } 
     const handleInput = (event)=>{
-        contract[event.target.name] = event.target.value;
+      contract[event.target.name] = event.target.value;
         setContract(contract); 
     }
     const post = async (e)=>{
-
       e.preventDefault();
-      const c = await postContract(contract);
-      
     }
   useEffect(()=>{
     findCar() ; getProfile();
@@ -133,7 +131,7 @@ return (
 
             <Col lg="7" className="mt-5">
               <div className="booking-info mt-5">
-<h5 className="mb-4 fw-bold ">Booking Information</h5>
+              <h5 className="mb-4 fw-bold ">Booking Information</h5>
     <Form onSubmit={post} method="post">
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
               <input type="text" onChange={handleInput}  name = "numberContract"  placeholder="Number Contract" />
@@ -156,7 +154,7 @@ return (
               <input type="text"onChange={handleInput}  name="thumbnail" placeholder="avatar" />
             </FormGroup>
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
-              <input type="text" onChange={handleInput} name="CCCD" placeholder="CCCD" />
+              <input type="text" onChange={handleInput} name="cccd" placeholder="CCCD" />
             </FormGroup>
             <FormGroup className="booking__form d-inline-block ms-1 mb-4">
               <input type="text" onChange={handleInput} name="contents" placeholder="Content" />
@@ -184,10 +182,7 @@ return (
             </FormGroup>
             <FormGroup className="booking__form d-inline-block me-4 mb-4">
 <input type="int" onChange={handleInput}  name="users_id" placeholder="usersId" value={user.id}/>
-            </FormGroup>
-            <FormGroup>
-              <textarea rows={5} type="textarea" className="textarea" placeholder="Node"></textarea>
-            </FormGroup>
+            </FormGroup><br/>
             <button type="submit" className="btn btn-primary">Submit</button>
     </Form>
               </div>
